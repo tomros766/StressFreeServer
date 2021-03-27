@@ -2,21 +2,28 @@
    "categories":
    [{
           "name" : "clips",
-          "id": 1
+          "id": 1,
+          "endpoint": "clip"
        },
        
        {
           "name" : "breathing exercises",
-          "id": 2
+          "id": 2,
+          "endpoint": "breathing"
+
        },
        
        {
           "name" : "calm music",
-          "id": 3
+          "id": 3,
+          "endpoint": "music"
+
        },
        {
            "name" : "memes",
-           "id" : 3
+           "id" : 4,
+           "endpoint": "meme"
+
        }
       ]
 }
