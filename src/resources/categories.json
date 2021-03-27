@@ -1,0 +1,20 @@
+{
+    "category1" : {
+       "name" : "clips",
+       "id": 1
+    },
+    
+    "category2" : {
+       "name" : "breathing exercises",
+       "id": 2
+    },
+    
+    "category3" : {
+       "name" : "calm music",
+       "id": 3
+    },
+    "category4" : {
+        "name" : "memes",
+        "id" : 3
+    }
+ }
