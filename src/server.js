@@ -15,6 +15,22 @@ app.get('/', function (req, res) {
     res.send('Hello GET');
  })
 
+const playlistId = "PLOWSbqDrrI5QU6-kEuXq2eFqWZ3po6yHh"
+const url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2C+id&maxResults=1000&playlistId="+playlistId+"&key="
+const yt_video = "https://www.youtube.com/watch?v="
+
+app.get('/clip', (req,res) => {
+   fetch(url+process.env.YT_API_KEY)
+   .then(response => response.json())
+   .then(data => 
+      {
+         const urls = data.items.map(elem =>yt_video+elem.snippet.resourceId.videoId)
+         const idx = Math.floor(Math.random()*Math.floor(urls.length))
+         res.send({"url": urls[idx]})
+      })
+   .catch(err => console.log(err));
+})
+
 app.get('/categories', function (req, res) {
    fs.readFile( __dirname + "/resources/" + "categories.json", 'utf8', function (err, data) {
       console.log( data );
@@ -69,3 +85,4 @@ app.get('/breathing', function(req, res) {
 
 
 app.listen(process.env.PORT || 5000)
+
