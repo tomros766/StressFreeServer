@@ -20,7 +20,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2",
+    "spotify-web-api-node": "^5.0.2"
   },
   "engines": {
     "node": "14.x"
