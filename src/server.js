@@ -3,7 +3,7 @@ var app = express();
 var fs = require("fs");
 var cors = require("cors")
 
-app.use(cors)
+app.use(cors())
 
 
 app.get('/', function (req, res) {
