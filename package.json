@@ -23,6 +23,8 @@
     "node-fetch": "^2.6.1",
     "request": "^2.88.2",
     "spotify-web-api-node": "^5.0.2"
+    "googleapis": "^68.0.0",
+    "node-fetch": "^2.6.1"
   },
   "engines": {
     "node": "14.x"
