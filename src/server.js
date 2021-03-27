@@ -57,8 +57,11 @@ app.get('/music', function (req, res) {
   );
 })
 
-
-
+app.get('/breathing', function(req, res) {
+  fs.readFile( __dirname + "/resources/" + "exercises.json", 'utf8', function (err, data) {
+    res.send( data.exercises[Math.floor(Math.random() * data.exercises.length)] );
+ });
+}) 
 
 
 

@@ -1,0 +1,24 @@
+{
+    "exercises": [
+        [
+            {"slow": {
+                "in" : 4,
+                "pause" : 3,
+                "out" : 4
+                }
+            },
+            {"slow": {
+                "in" : 4,
+                "pause" : 3,
+                "out" : 4
+                }
+            },
+            {"slow": {
+                "in" : 4,
+                "pause" : 3,
+                "out" : 4
+                }
+            }
+        ]    
+    ]
+}
