@@ -96,8 +96,7 @@ const increment = function(category) {
     if (err) {
       console.log(err.stack)
     } else {
-      console.log(res.rows)
-      if (res.rows == null) {
+      if (res.rows === []) {
         pool.query('INSERT INTO counts(category, count) VALUES ($1, $2)', [category, 1], (err, res) => {
           if (err) {
             console.log(err.stack)
