@@ -123,7 +123,6 @@ app.get('/counts', function(req, res) {
     if (err) {
       console.log(err.stack)
     } else {
-      console.log(response.rows)
       res.send(response.rows)
     }
   })
