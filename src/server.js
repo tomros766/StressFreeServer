@@ -118,7 +118,7 @@ app.get('/counts', function (req, res) {
     if (err) {
       console.log(err.stack)
     } else {
-      res.send(response.rows)
+      res.send({"counts" : response.rows})
     }
   })
 })
