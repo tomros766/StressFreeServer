@@ -118,6 +118,17 @@ const increment = function(category) {
   })
 }
 
+app.get('/counts', function(req, res) {
+  pool.query("SELECT counts.category, counts.count FROM counts", (err, res) => {
+    if (err) {
+      console.log(err.stack)
+    } else {
+      console.log(res.rows)
+      res.send(res.rows)
+    }
+  })
+})
+
 
 
 app.listen(process.env.PORT || 5000)
