@@ -4,6 +4,10 @@ var fs = require("fs");
 var cors = require("cors")
 const fetch = require("node-fetch");
 var SpotifyWebApi = require('spotify-web-api-node');
+const { Pool, Client } = require('pg');
+const { response } = require('express');
+
+const pool = new Pool()
 
 
 
@@ -29,6 +33,7 @@ app.get('/clip', (req,res) => {
          res.send({"url": urls[idx]})
       })
    .catch(err => console.log(err));
+   increment('clip')
 })
 
 app.get('/categories', function (req, res) {
@@ -43,6 +48,7 @@ app.get('/meme', function (req, res) {
     .then(response => response.json())
     .then(data => res.send({"url": data.url}))
     .catch(err => console.log(err));
+    increment('meme')
 })
 
 
@@ -71,6 +77,7 @@ app.get('/music', function (req, res) {
       console.log('Something went wrong when retrieving an access token', err);
     }
   );
+  increment('music')
 })
 
 app.get('/breathing', function(req, res) {
@@ -80,7 +87,35 @@ app.get('/breathing', function(req, res) {
     res.send( parsed.exercises[Math.floor(Math.random() * parsed.exercises.length)] )
     
  });
+ increment('breathing')
 }) 
+
+const increment = function(category) {
+  pool.query('SELECT counts.count FROM counts WHERE counts.category = $1', [category] ,(err, res) => {
+    if (err) {
+      console.log(err.stack)
+    } else {
+      if (res.rows == null) {
+        pool.query('INSERT INTO counts(category, count) VALUES ($1, $2) returning *', [category, 1], (err, res) => {
+          if (err) {
+            console.log(err.stack)
+          } else {
+            console.log(res.rows[0])
+          }
+        })
+
+      } else {
+        pool.query('UPDATES counts SET count=count+1 WHERE category = $1', [category], (err, res) => {
+          if (err) {
+            console.log(err.stack)
+          } else {
+            console.log('updated')
+          }
+        })
+      }
+    }
+  })
+}
 
 
 
