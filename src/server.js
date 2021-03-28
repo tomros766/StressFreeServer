@@ -31,7 +31,7 @@ app.get('/categories', function (req, res) {
 
 
 app.get('/clip', (req, res) => {
-  fs.readFile(__dirname + "/resources/" + "categories.json", 'utf8', function (err, data) {
+  fs.readFile(__dirname + "/resources/" + "playlists.json", 'utf8', function (err, data) {
     const playlists = JSON.parse(data).playlists;
     const playlistId = playlists[Math.floor(Math.random() * playlists.length)]
     const url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2C+id&maxResults=1000&playlistId=" + playlistId + "&key="
