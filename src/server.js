@@ -114,7 +114,7 @@ const increment = function (category) {
 }
 
 app.get('/counts', function (req, res) {
-  pool.query("SELECT COUNT(*) FROM counts GROUP BY counts.createdOn, counts.category", (err, response) => {
+  pool.query("SELECT COUNT(*) FROM counts GROUP BY counts.created_on, counts.category", (err, response) => {
     if (err) {
       console.log(err.stack)
     } else {
