@@ -119,12 +119,12 @@ const increment = function(category) {
 }
 
 app.get('/counts', function(req, res) {
-  pool.query("SELECT counts.category, counts.count FROM counts", (err, res) => {
+  pool.query("SELECT counts.category, counts.count FROM counts", (err, response) => {
     if (err) {
       console.log(err.stack)
     } else {
-      console.log(res.rows)
-      res.send(res.rows)
+      console.log(response.rows)
+      res.send(response.rows)
     }
   })
 })
