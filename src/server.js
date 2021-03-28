@@ -102,7 +102,7 @@ const increment = function (category) {
       console.log(err.stack)
     } else {
       if (res.rows.length == 0) {
-        pool.query('INSERT INTO counts(category, count, created_on) VALUES ($1, $2, $3)', [category, 1, new Date().getTime()], (err, res) => {
+        pool.query('INSERT INTO counts(category, count, created_on) VALUES ($1, $2, $3)', [category, 1, new Date()], (err, res) => {
           if (err) {
             console.log(err.stack)
           } else {
