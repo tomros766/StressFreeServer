@@ -66,8 +66,8 @@ app.get('/landscape', function (req, res) {
 })
 
 var spotifyApi = new SpotifyWebApi({
-  clientId: '066408f213eb445db863613e81c4dc06',
-  clientSecret: 'c7a2a9f9209749289d566124a1eb2a65'
+  clientId: process.env.SPFY_CLIENT_ID,
+  clientSecret: process.env.SPFY_CLIENT_SECRET
 });
 
 
