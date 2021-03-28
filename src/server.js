@@ -57,6 +57,13 @@ app.get('/meme', function (req, res) {
   increment('meme')
 })
 
+app.get('/landscape', function (req, res) {
+  const obj = fetch('https://meme-api.herokuapp.com/gimme/EarthPorn')
+    .then(response => response.json())
+    .then(data => res.send({ "url": data.url }))
+    .catch(err => console.log(err));
+  increment('landscape')
+})
 
 var spotifyApi = new SpotifyWebApi({
   clientId: '066408f213eb445db863613e81c4dc06',

@@ -23,7 +23,11 @@
            "name" : "memes",
            "id" : 4,
            "endpoint": "meme"
-
-       }
+       },
+       {
+         "name" : "landscapes",
+         "id" : 4,
+         "endpoint": "landscape"
+     }
       ]
 }
