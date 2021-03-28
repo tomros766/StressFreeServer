@@ -104,34 +104,17 @@ app.get('/breathing', function (req, res) {
 })
 
 const increment = function (category) {
-  pool.query('SELECT counts.count FROM counts WHERE counts.category = $1', [category], (err, res) => {
-    if (err) {
-      console.log(err.stack)
-    } else {
-      if (res.rows.length == 0) {
-        pool.query('INSERT INTO counts(category, count, created_on) VALUES ($1, $2, $3)', [category, 1, new Date()], (err, res) => {
+        pool.query('INSERT INTO counts(category, created_on) VALUES ($1, $2)', [category, new Date()], (err, res) => {
           if (err) {
             console.log(err.stack)
           } else {
             console.log('inserted')
           }
         })
-
-      } else {
-        pool.query('UPDATE counts SET count=count+1 WHERE category = $1', [category], (err, res) => {
-          if (err) {
-            console.log(err.stack)
-          } else {
-            console.log('updated')
-          }
-        })
-      }
-    }
-  })
 }
 
 app.get('/counts', function (req, res) {
-  pool.query("SELECT counts.category, counts.count FROM counts", (err, response) => {
+  pool.query("SELECT count(*) FROM counts GROUP BY counts.createdOn, counts.category", (err, response) => {
     if (err) {
       console.log(err.stack)
     } else {
