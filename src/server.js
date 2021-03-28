@@ -106,7 +106,7 @@ const increment = function(category) {
         })
 
       } else {
-        pool.query('UPDATES counts SET count=count+1 WHERE category = $1', [category], (err, res) => {
+        pool.query('UPDATE counts SET count=count+1 WHERE category = $1', [category], (err, res) => {
           if (err) {
             console.log(err.stack)
           } else {
