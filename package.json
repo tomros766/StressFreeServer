@@ -21,6 +21,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "googleapis": "^68.0.0",
+    "image-size": "^0.9.7",
     "node-fetch": "^2.6.1",
     "pg": "^8.5.1",
     "request": "^2.88.2",

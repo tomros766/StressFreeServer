@@ -7,6 +7,7 @@ var SpotifyWebApi = require('spotify-web-api-node');
 const { Pool, Client } = require('pg');
 const { response } = require('express');
 
+
 const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 })
@@ -101,7 +102,7 @@ const increment = function (category) {
       console.log(err.stack)
     } else {
       if (res.rows.length == 0) {
-        pool.query('INSERT INTO counts(category, count) VALUES ($1, $2)', [category, 1], (err, res) => {
+        pool.query('INSERT INTO counts(category, count, created_on) VALUES ($1, $2, $3)', [category, 1, new Date().getTime()], (err, res) => {
           if (err) {
             console.log(err.stack)
           } else {
