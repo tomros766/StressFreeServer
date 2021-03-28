@@ -96,12 +96,13 @@ const increment = function(category) {
     if (err) {
       console.log(err.stack)
     } else {
+      console.log(res.rows)
       if (res.rows == null) {
-        pool.query('INSERT INTO counts(category, count) VALUES ($1, $2) returning *', [category, 1], (err, res) => {
+        pool.query('INSERT INTO counts(category, count) VALUES ($1, $2)', [category, 1], (err, res) => {
           if (err) {
             console.log(err.stack)
           } else {
-            console.log(res.rows[0])
+            console.log('inserted')
           }
         })
 
