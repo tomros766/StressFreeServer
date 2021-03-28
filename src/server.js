@@ -104,7 +104,7 @@ app.get('/breathing', function (req, res) {
 })
 
 const increment = function (category) {
-        pool.query('INSERT INTO counts(category, created_on) VALUES ($1, $2)', [category, 'current_date()'], (err, res) => {
+        pool.query('INSERT INTO counts(category, created_on) VALUES ($1, $2)', [category, 'current_date'], (err, res) => {
           if (err) {
             console.log(err.stack)
           } else {
