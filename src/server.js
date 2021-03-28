@@ -7,8 +7,9 @@ var SpotifyWebApi = require('spotify-web-api-node');
 const { Pool, Client } = require('pg');
 const { response } = require('express');
 
-const pool = new Pool()
-
+const pool = new Pool({
+  ssl: { rejectUnauthorized: false }
+})
 
 
 app.use(cors())
